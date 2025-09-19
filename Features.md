@@ -1,0 +1,172 @@
+using Resonance.Classes;
+using Resonance.Menu;
+using Resonance.Mods;
+using static Resonance.Settings;
+
+namespace Resonance.Menu
+{
+    internal class Buttons
+    {
+        public static ButtonInfo[][] buttons = new ButtonInfo[][]
+        {
+            new ButtonInfo[] { // Main Mods
+                new ButtonInfo { buttonText = "Leave Room", method =() => Global.Dis(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "RP Leave Room", method =() => Global.Dis2(), isTogglable = true, toolTip = ""},
+                new ButtonInfo { buttonText = "Kill App", method =() => Global.kill(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "RP Kill App", method =() => Global.Kill2(), isTogglable = true, toolTip = ""},
+                new ButtonInfo { buttonText = "Join Random", method =() => Global.JoinRandom(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "Join Ghost Code", method =() => Global.JoinGhostCode(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "Join Discord", method =() => Global.open(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "Anti Report", method =() => Global.AntiReportMethod(), isTogglable = true, toolTip = ""},
+                new ButtonInfo { buttonText = "Flush RPCs", method =() => Global.FlushRPCS(), isTogglable = false, toolTip = "use after using detected mods!"},
+                new ButtonInfo { buttonText = "Assume New Identity", method =() => Global.ChangeIdentity(), isTogglable = false, toolTip = "changes your name and color!"},
+                new ButtonInfo { buttonText = "No Finger Movement", method =() => Global.NoFinger(), isTogglable = true, toolTip = "kicks you if someone tries to report you!"},
+                new ButtonInfo { buttonText = "Fake Oculus Menu", method =() => Global.FakeOculusMenu(), isTogglable = true, toolTip = "kicks you if someone tries to report you!"},
+                new ButtonInfo { buttonText = "Fake Broken Controllers", method =() => Global.FakeBrokenController(), isTogglable = true, toolTip = "kicks you if someone tries to report you!"},
+                new ButtonInfo { buttonText = "Mtod + CoC Text Toggle", method =() => Global.CustomBoards(), isTogglable = true, toolTip = "Custom boards"},
+                new ButtonInfo { buttonText = "Report Gun", method =() => Room.ReportGun(), isTogglable = true, toolTip = "Report Gun"},
+                new ButtonInfo { buttonText = "Report All", method =() => Room.ReportAll(), isTogglable = true, toolTip = "Report All"},
+                new ButtonInfo { buttonText = "Mute Gun", method =() => Room.MuteGun(), isTogglable = true, toolTip = "Mute Gun"},
+                new ButtonInfo { buttonText = "Mute All", method =() => Room.MuteAll(), isTogglable = true, toolTip = "Mute All"},
+            },
+
+            new ButtonInfo[] { // Settings
+                new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
+                new ButtonInfo { buttonText = "Menu", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "Movement", method =() => SettingsMods.MovementSettings(), isTogglable = false, toolTip = "Opens the movement settings for the menu."},
+                new ButtonInfo { buttonText = "Projectile", method =() => SettingsMods.ProjectileSettings(), isTogglable = false, toolTip = "Opens the projectile settings for the menu."},
+            },
+
+            new ButtonInfo[] { // Menu Settings
+                new ButtonInfo { buttonText = "Back To Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
+                new ButtonInfo { buttonText = "Right Hand", enableMethod =() => SettingsMods.RightHand(), disableMethod =() => SettingsMods.LeftHand(), toolTip = "Puts the menu on your right hand."},
+                new ButtonInfo { buttonText = "Notifications", enableMethod =() => SettingsMods.EnableNotifications(), disableMethod =() => SettingsMods.DisableNotifications(), enabled = !disableNotifications, toolTip = "Toggles the notifications."},
+                new ButtonInfo { buttonText = "Animation 2", enableMethod =() => SettingsMods.EnableAni(), disableMethod =() => SettingsMods.DisableAni(), toolTip = "Toggles the disconnect button."},
+                new ButtonInfo { buttonText = "Animation 3", enableMethod =() => SettingsMods.EnableAni3(), disableMethod =() => SettingsMods.DisableAni3(), toolTip = "Toggles the disconnect button."},
+                new ButtonInfo { buttonText = "Animation 4", enableMethod =() => SettingsMods.EnableAni4(), disableMethod =() => SettingsMods.DisableAni4(), toolTip = "Toggles the disconnect button."},
+                new ButtonInfo { buttonText = "Animation 5", enableMethod =() => SettingsMods.EnableAni5(), disableMethod =() => SettingsMods.DisableAni5(), toolTip = "Toggles the disconnect button."},
+            },
+
+            new ButtonInfo[] { // Movement Settings
+                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Returns to the main settings page for the menu."},
+                new ButtonInfo { buttonText = "Fly Speed Slow", method =() => MovementSettings.SlowFlySpeed(), isTogglable = false, toolTip = "Changes the fly speed to slow."},
+                new ButtonInfo { buttonText = "Fly Speed Normal", method =() => MovementSettings.NormalFlySpeed(), isTogglable = false, toolTip = "Changes the fly speed to normal."},
+                new ButtonInfo { buttonText = "Fly Speed Fast", method =() => MovementSettings.FastFlySpeed(), isTogglable = false, toolTip = "Changes the fly speed to fast."},
+                new ButtonInfo { buttonText = "Fly Speed Insane", method =() => MovementSettings.VeryFastFlySpeed(), isTogglable = false, toolTip = "Changes the fly speed to insane."},
+                new ButtonInfo { buttonText = "Boost Speed Slow", method =() => MovementSettings.SlowBoostSpeed(), isTogglable = false, toolTip = "Changes the boost speed to slow."},
+                new ButtonInfo { buttonText = "Boost Speed Normal", method =() => MovementSettings.NormalBoostSpeed(), isTogglable = false, toolTip = "Changes the boost speed to normal."},
+                new ButtonInfo { buttonText = "Boost Speed Fast", method =() => MovementSettings.FastBoostSpeed(), isTogglable = false, toolTip = "Changes the boost speed to fast."},
+                new ButtonInfo { buttonText = "Boost Speed Insane", method =() => MovementSettings.VeryFastBoostSpeed(), isTogglable = false, toolTip = "Changes the boost speed to insane."},
+            },
+
+            new ButtonInfo[] { // Projectile Settings
+                new ButtonInfo { buttonText = "Return to Settings", method =() => SettingsMods.MenuSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+            },
+
+            new ButtonInfo[] { // Movement
+                new ButtonInfo { buttonText = "Fly [<color=magenta>B</color>]", method =() => Move.Fly(), isTogglable = true, toolTip = "Fly."},
+                new ButtonInfo { buttonText = "WASD Fly", method =() => Move.WASD(), isTogglable = true, toolTip = "WASD."},
+                new ButtonInfo { buttonText = "Hand Fly [<color=magenta>B</color>]", method =() => Move.HandFly(), isTogglable = true, toolTip = "Hand Fly."},
+                new ButtonInfo { buttonText = "Grip Fly [<color=magenta>RG</color>]", method =() => Move.GripFly(), isTogglable = true, toolTip = "Hand Fly."},
+                new ButtonInfo { buttonText = "Trigger Fly [<color=magenta>RT</color>]", method =() => Move.TriggerFly(), isTogglable = true, toolTip = "Trigger Fly."},
+                new ButtonInfo { buttonText = "Noclip [<color=magenta>RT</color>]", method =() => Move.Noclip(), isTogglable = true, toolTip = "Noclip."},
+                new ButtonInfo { buttonText = "Platforms [<color=magenta>LG, RG</color>]", method =() => Move.Platforms(), isTogglable = true, toolTip = "Platforms."},
+                new ButtonInfo { buttonText = "Trigger Platforms [<color=magenta>LG, RG</color>]", method =() => Move.TriggerPlatforms(), isTogglable = true, toolTip = "Platforms With Triggers."},
+                new ButtonInfo { buttonText = "Speedboost [<color=magenta>LG, RG,</color>]", method =() => Move.Speedboost(), isTogglable = true, toolTip = "Speedboost [<color=magenta>Customizable!</color>]."},
+                new ButtonInfo { buttonText = "Noclip Platforms [<color=magenta>LG, RG</color>]", method =() => Move.NoclipPlatforms(), isTogglable = true, toolTip = "Noclip Platforms."},
+                new ButtonInfo { buttonText = "Noclip Fly [<color=magenta>B</color>]", method =() => Move.NoclipFly(), isTogglable = true, toolTip = "Noclip Fly."},
+                new ButtonInfo { buttonText = "Car Monke [<color=magenta>RT, LT</color>]", method =() => Move.CarMonke(), isTogglable = true, toolTip = "Car Monke."},
+                new ButtonInfo { buttonText = "Up Down [<color=magenta>RT, LT</color>]", method =() => Move.UpDown(), isTogglable = true, toolTip = "Up And Down."},
+                new ButtonInfo { buttonText = "Left Right [<color=magenta>RT, LT</color>]", method =() => Move.LeftRight(), isTogglable = true, toolTip = "Left And Right."},
+                new ButtonInfo { buttonText = "Slide Control [<color=magenta>RG, LG</color>]", method =() => Move.SlideControl(), isTogglable = true, toolTip = "Allows You To Control Where You Slide While Holding RG or LG on Ice."},
+                new ButtonInfo { buttonText = "Sling Shot [<color=magenta>B</color>]", method =() => Move.Slingshot(), isTogglable = true, toolTip = "Sling Shot."},
+                new ButtonInfo { buttonText = "Reverse Fly [<color=magenta>B</color>]", method =() => Move.ReverseFly(), isTogglable = true, toolTip = "Reverse Fly."},
+                new ButtonInfo { buttonText = "Dash [<color=magenta>B</color>]", method =() => Move.Dash(), isTogglable = true, toolTip = "Dash."},
+                new ButtonInfo { buttonText = "Wall Walk [<color=magenta>G</color>]", method =() => Move.WallWalk(), isTogglable = true, toolTip = "Dash."},
+                new ButtonInfo { buttonText = "TP Gun [<color=magenta>RG, RT</color>]", method =() => Move.TeleportGun(), isTogglable = true, toolTip = "Dash."},
+                new ButtonInfo { buttonText = "No Tag Freeze", method =() => Move.NoTagFreeze(), isTogglable = true, toolTip = "No Tag Freeze."},
+                new ButtonInfo { buttonText = "Tag Freeze", method =() => Move.TagFreeze(), isTogglable = true, toolTip = "Tag Freeze."},
+            },
+            new ButtonInfo[] { // Fun
+                new ButtonInfo { buttonText = "Water Splash Hands <color=magenta>RG, LG</color>]", method =() => Fun.WaterSpamHands(), isTogglable = true, toolTip = "Splashes water from hands."},
+                new ButtonInfo { buttonText = "Water Splash Body <color=magenta>RT</color>]", method =() => Fun.WaterSpamBody(), isTogglable = true, toolTip = "Splashes water from body."},
+                new ButtonInfo { buttonText = "Water Splash Head <color=magenta>RT</color>]", method =() => Fun.WaterSpamHead(), isTogglable = true, toolTip = "Splashes water from head."},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>RESET</color>]", method =() => Fun.QuestReset(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>10,000</color>]", method =() => Fun.Quest10000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>20,000</color>]", method =() => Fun.Quest20000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>30,000</color>]", method =() => Fun.Quest30000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>40,000</color>]", method =() => Fun.Quest40000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>50,000</color>]", method =() => Fun.Quest50000(), isTogglable = false, toolTip = "Sets Quest Badge."},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>60,000</color>]", method =() => Fun.Quest60000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>70,000</color>]", method =() => Fun.Quest70000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>80,000</color>]", method =() => Fun.Quest80000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>90,000</color>]", method =() => Fun.Quest90000(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>67</color>]", method =() => Fun.Quest67(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>69420</color>]", method =() => Fun.Quest69420(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>10101</color>]", method =() => Fun.Quest10101(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Set Quest Badge <color=magenta>MAX</color>]", method =() => Fun.Quest99999(), isTogglable = false, toolTip = "Sets Quest Badge"},
+                new ButtonInfo { buttonText = "Get Hoverboard <color=magenta>Visual</color>]", method =() => Fun.GetHoverboard(), isTogglable = false, toolTip = "Gives you visual hoverboard."},
+
+            },
+            new ButtonInfo[] { // Master
+                new ButtonInfo { buttonText = "Check Master", method =() => Global.IsMasterCheck(), isTogglable = false, toolTip = ""},
+                new ButtonInfo { buttonText = "Kick Gun [<color=magenta>M, inElevator</color>]", method =() => OP.ElevatorKickGun(), isTogglable = true, toolTip = "Instant Kick Gun (in elevator)"},
+                new ButtonInfo { buttonText = "Kick All [<color=magenta>M, inElevator</color>]", method =() => OP.ElevatorKickAll(), isTogglable = true, toolTip = "Instant Kick All (in elevator)."},
+                new ButtonInfo { buttonText = "Slow All [<color=magenta>M</color>]", method =() => Master.SlowAll(), isTogglable = true, toolTip = "Slow All."},
+                new ButtonInfo { buttonText = "Slow Gun [<color=magenta>M</color>]", method =() => Master.SlowGun(), isTogglable = true, toolTip = "Slow Gun."},
+                new ButtonInfo { buttonText = "Snowball SFX All [<color=magenta>M</color>]", method =() => Master.SnowballSFXAll(), isTogglable = true, toolTip = "Fling All."},
+                new ButtonInfo { buttonText = "Snowball SFX Gun [<color=magenta>M</color>]", method =() => Master.SnowballSFXGun(), isTogglable = true, toolTip = "Fling Gun."},
+                new ButtonInfo { buttonText = "Vibrate All [<color=magenta>M</color>]", method =() => Master.VibrateAll(), isTogglable = true, toolTip = "Vibrate All."},
+                new ButtonInfo { buttonText = "Vibrate Gun [<color=magenta>M</color>]", method =() => Master.VibrateGun(), isTogglable = true, toolTip = "Vibrate Gun."},
+            },
+            new ButtonInfo[] { // OP
+                new ButtonInfo { buttonText = "Insta-Quit All [<color=magenta>vStump</color>]", method =() => OP.InstaCrashAll(), isTogglable = true, toolTip = "Instant Quit All."},
+                new ButtonInfo { buttonText = "Insta-Quit Gun [<color=magenta>vStump</color>]", method =() => OP.InstaCrashGun(), isTogglable = true, toolTip = "Instant Quit Gun."},
+                new ButtonInfo { buttonText = "Crash All [<color=magenta>Mountains</color>]", method =() => OP.MountainCrashers(2), isTogglable = true, toolTip = "Instant Crash All."},
+                new ButtonInfo { buttonText = "Crash Gun [<color=magenta>Mountains</color>]", method =() => OP.MountainCrashers(1), isTogglable = true, toolTip = "Instant Crash Gun."},
+                new ButtonInfo { buttonText = "Lag All [<color=magenta>OP</color>]", method =() => OP.LagAll(), isTogglable = true, toolTip = "Lags everyone."},
+                new ButtonInfo { buttonText = "Kick All [<color=magenta>inStump + privateCode</color>]", method =() => OP.KickAllInStump(), isTogglable = true, toolTip = "Kick all in stump in a private code."},
+                new ButtonInfo { buttonText = "Fling Player [<color=magenta>handGrab</color>]", method =() => OP.FlingOnGrab(), isTogglable = true, toolTip = "Flings a player when they grab your hand."},
+            },
+            new ButtonInfo[] { // vis
+                new ButtonInfo { buttonText = "Chams", method =() => Visual.Chams(), isTogglable = true, toolTip = "Chams."},
+                new ButtonInfo { buttonText = "Chams Off", method =() => Visual.ChamsOff(), isTogglable = false, toolTip = "Chams Off."},
+                new ButtonInfo { buttonText = "NameTags", method =() => Visual.Nametags(), isTogglable = true, toolTip = "Name Tags."},
+                new ButtonInfo { buttonText = "Tracers", method =() => Visual.Tracers(), isTogglable = true, toolTip = "Tracers."},
+            },
+            new ButtonInfo[] { // VRRig
+                new ButtonInfo { buttonText = "Spin Head V1 <color=magenta>RT</color>]", method =() => VRRIG.SpinHeadV1(), isTogglable = true, toolTip = "Spin Head X."},
+                new ButtonInfo { buttonText = "Spin Head V2 <color=magenta>RT</color>]", method =() => VRRIG.SpinHeadV2(), isTogglable = true, toolTip = "Spin Head Y."},
+                new ButtonInfo { buttonText = "Spin Head V3 <color=magenta>RT</color>]", method =() => VRRIG.SpinHeadV3(), isTogglable = true, toolTip = "Spin Head Z."},
+                new ButtonInfo { buttonText = "Spaz Head <color=magenta>RT</color>]", method =() => VRRIG.SpazHead(), isTogglable = true, toolTip = "Spaz Head."},
+                new ButtonInfo { buttonText = "Upside Down Head <color=magenta>RT</color>]", method =() => VRRIG.UpsideDownHead(), isTogglable = true, toolTip = "Upside Down Head."},
+                new ButtonInfo { buttonText = "No Finger Movement", method =() => VRRIG.NoFingerMove(), isTogglable = true, toolTip = "No Finger Movement."},
+                new ButtonInfo { buttonText = "Inviz <color=magenta>LT</color>]", method =() => VRRIG.Inviz(), isTogglable = true, toolTip = "Inviz."},
+                new ButtonInfo { buttonText = "Ghost <color=magenta>RT</color>]", method =() => VRRIG.Ghost(), isTogglable = true, toolTip = "Ghost."},
+                new ButtonInfo { buttonText = "Zero Gravity", method =() => VRRIG.ZeroGravity(), isTogglable = true, toolTip = "Zero Gravity."},
+                new ButtonInfo { buttonText = "Inviz On Touch", method =() => VRRIG.InvizOnTouch(), isTogglable = true, toolTip = "Inviz On Touch."},
+                new ButtonInfo { buttonText = "Ghost On Touch", method =() => VRRIG.GhostOnTouch(), isTogglable = true, toolTip = "Ghost On Touch."},
+                new ButtonInfo { buttonText = "Follow Closest", method =() => VRRIG.FollowClosest(), isTogglable = true, toolTip = "Follow Closest."},
+                new ButtonInfo { buttonText = "Copy Closest", method =() => VRRIG.CopyClosest(), isTogglable = true, toolTip = "Copy Closest."},
+                new ButtonInfo { buttonText = "Grab Rig", method =() => VRRIG.GrabRig(), isTogglable = true, toolTip = "Grab Rig."},
+                new ButtonInfo { buttonText = "Rig Gun", method =() => VRRIG.RigGun(), isTogglable = true, toolTip = "Rig Gun."},
+                new ButtonInfo { buttonText = "Teleport To Player Gun", method =() => VRRIG.TeleportToPlayerGun(), isTogglable = true, toolTip = "Teleport To Player Gun."},
+                new ButtonInfo { buttonText = "Long Arms", method =() => VRRIG.LongArms(), isTogglable = true, toolTip = "Long Arms."},
+                new ButtonInfo { buttonText = "Reset Arms", method =() => VRRIG.ResetArms(), isTogglable = true, toolTip = "Reset Arms."},
+            },
+             new ButtonInfo[] { // Catagorys Dont touch
+                new ButtonInfo { buttonText = "movement", method =() => SettingsMods.movement(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "fun", method =() => SettingsMods.fun(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "spammers", method =() => SettingsMods.spammers(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "op", method =() => SettingsMods.op(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "vis", method =() => SettingsMods.visuals(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "ad", method =() => SettingsMods.adventages(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "Settings", method =() => SettingsMods.EnterSettings(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+            },
+            new ButtonInfo[] { // Dont Touch
+                new ButtonInfo { buttonText = "Home", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+                new ButtonInfo { buttonText = "Dis", method =() => Global.Dis(), isTogglable = false, toolTip = "Opens the settings for the menu."},
+            },
+        };
+    }
+}
